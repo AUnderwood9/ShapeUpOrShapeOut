@@ -1,0 +1,36 @@
+@import "utilities/utilities.scss";
+@import "utilities/utilities_basic_sizing.scss";
+@import "utilities/utilities_basic_decoration.scss";
+
+.container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    .input-field{
+        margin: 1em;
+    }
+
+    .shape-inputs{
+        @include adjust_width_height(45%, 15em);
+        @include add_border();
+        margin: auto auto 2em auto;
+    }
+    
+    .info-panel{
+        @include adjust_width_height(45%, 15em);
+        margin: auto;
+        @include add_border();
+        margin: auto auto 2em auto;
+    }
+    
+    .shape-canvas{
+        @include adjust_width_height(100%, 35em);
+        @include add_border();
+        @include background_color(#00CAFF);
+        margin: auto;
+    }
+}
+
+
+

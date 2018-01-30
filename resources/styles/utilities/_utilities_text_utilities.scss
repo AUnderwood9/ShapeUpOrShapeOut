@@ -1,0 +1,23 @@
+@mixin text_color($color: black){
+    color: $color;
+}
+
+@mixin text_size($size){
+    font-size: $size;
+}
+
+@mixin text_alignment($position){
+    text-align: $position;
+}
+
+@mixin remove_text_decoration{
+    text-decoration: none;
+}
+
+@mixin no_word_wrap{
+    white-space: nowrap;
+}
+
+@mixin text_uppercase{
+    text-transform: uppercase;
+}

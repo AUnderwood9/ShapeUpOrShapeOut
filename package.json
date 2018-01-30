@@ -1,0 +1,25 @@
+{
+  "name": "ShapeUpOrShapeOut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch resources/styles/style.scss resources/styles/style.css",
+    "typescript": "tsc --watch index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AUnderwood9/ShapeUpOrShapeOut.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AUnderwood9/ShapeUpOrShapeOut/issues"
+  },
+  "homepage": "https://github.com/AUnderwood9/ShapeUpOrShapeOut#readme",
+  "dependencies": {
+    "node-sass": "^4.7.2"
+  }
+}

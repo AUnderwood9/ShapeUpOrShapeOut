@@ -1,0 +1,15 @@
+@mixin background_image($url, $size:50%, $position1: initial, $position2: initial){
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-size: $size;
+    background-position: $position1, $position2; 
+}
+
+
+@mixin background_color($color){
+    background-color: $color;
+}
+
+@mixin set_opacity($value){
+    opacity: $value;
+}

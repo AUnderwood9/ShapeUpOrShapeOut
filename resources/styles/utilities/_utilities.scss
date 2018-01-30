@@ -1,0 +1,25 @@
+@import "variables";
+
+@mixin add_border($thickness:.1em, $padding:.75em){
+    border: $thickness solid black;
+    padding: $padding;
+}
+
+@mixin clear_border{
+    border: none;
+}
+
+@mixin center_element{
+    float: none;
+    margin: 0 auto;
+}
+
+@mixin underline($thickness:.1em, $padding:.75em, $color:black){
+    border-bottom: $thickness solid $color;
+    padding-bottom: $padding;
+}
+
+@mixin top_line($thickness:.1em, $padding:.75em){
+    border-top: $thickness solid black;
+    padding-top: $padding;
+}
