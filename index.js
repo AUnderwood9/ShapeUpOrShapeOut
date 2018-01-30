@@ -21,7 +21,13 @@ class Shape{
     }
 
     render(){
-
+        switch(String(this.type)){
+            case "Rectangle":
+                break;
+            case "circle": 
+            default:
+                break;
+        }
     }
 
     showInfo(){
