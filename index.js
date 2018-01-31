@@ -19,9 +19,6 @@ let rectangleDimensions = {
 };
 let triangleHeight;
 
-//let currentOptionObject;
-
-
 class Shape{
     constructor(type, dimensions = {height: "N/A", width: "N/A", radius: "N/A"}){
         this.type = type;
@@ -31,32 +28,28 @@ class Shape{
     render(){
         switch(String(this.type)){
             case "Rectangle":
-                let rectangleToAdd = $(`<div class="rectangle"></div>`);
-                rectangleToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.height}`});
-                rectangleToAdd.data(this.dimensions);
-                mainCanvas.append(rectangleToAdd);
-                // console.log(rectangleToAdd.data());
+                this.shapeToAdd = $(`<div class="rectangle"></div>`);
+                this.shapeToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.height}`});
+                this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
+                mainCanvas.append(this.shapeToAdd);
                 break;
             case "Circle": 
-                let circleToAdd = $(`<div class="circle"></div>`);
-                circleToAdd.css({"width" : `${2*this.dimensions.radius}px`, "height": `${2*this.dimensions.radius}px`});
-                circleToAdd.data(this.dimensions);
-                mainCanvas.append(circleToAdd);
-                // console.log(circleToAdd.data());
+                this.shapeToAdd = $(`<div class="circle"></div>`);
+                this.shapeToAdd.css({"width" : `${2*this.dimensions.radius}px`, "height": `${2*this.dimensions.radius}px`});
+                this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
+                mainCanvas.append(this.shapeToAdd);
                 break;
             case "Square":
-                let squareToAdd = $(`<div class="square"></div>`);
-                squareToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.width}`});
-                squareToAdd.data(this.dimensions);
-                mainCanvas.append(squareToAdd);
-                // console.log(squareToAdd.data());
+                this.shapeToAdd = $(`<div class="square"></div>`);
+                this.shapeToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.width}`});
+                this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
+                mainCanvas.append(this.shapeToAdd);
                 break;
             case "Triangle":
-                let triangleToAdd = $(`<div class="triangle"></div>`);
-                triangleToAdd.css("border-width", `${this.dimensions.height}px`);
-                triangleToAdd.data(this.dimensions)
-                mainCanvas.append(triangleToAdd);
-                // console.log(triangleToAdd.data());
+                this.shapeToAdd = $(`<div class="triangle"></div>`);
+                this.shapeToAdd.css("border-width", `${this.dimensions.height}px`);
+                this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
+                mainCanvas.append(this.shapeToAdd);
                 break;
             default:
                 break;
@@ -68,11 +61,6 @@ class Shape{
         for(let key in this.dimensions){
             appendTextToElement(sidePanel, `<p class="info-text">${key}: ${this.dimensions[key]}</p>`);
         }
-
-        // switch(String(this.type)){
-        // }
-        
-        //console.log(this.dimensions);
         
     }
 }
@@ -167,8 +155,6 @@ const rectangleBtnHandler = function(event){
     let curentHeight = getTextFromInput(rectangleHeightText);
 
     let rectangleObject = new Rectangle({width: currentWidth, height: curentHeight});
-
-    rectangleObject.showInfo();
     rectangleObject.render();
 }
 
@@ -176,9 +162,6 @@ const squareBtnHandler = function(event){
     let currentWidth = getTextFromInput(squareLengthText);
 
     let squareObject = new Square({width: currentWidth, height: currentWidth});
-
-
-    squareObject.showInfo();
     squareObject.render();
 }
 
@@ -186,8 +169,6 @@ const circleBtnHandler = function(event){
     let currentRadius = getTextFromInput(circleRadiusText);
 
     let circleObject = new Circle({radius: currentRadius});
-
-    circleObject.showInfo();
     circleObject.render();
 }
 
@@ -195,9 +176,15 @@ const triangleBtnHandler = function(event){
     let currentHeight = getTextFromInput(triangleHeightText);
 
     let triangleObject = new Triangle({height: currentHeight});
-
-    triangleObject.showInfo();
     triangleObject.render();
+}
+
+const onClickHandler = function(event){
+    event.data.showInfo();
+}
+
+const onDblClickHandler = function(event){
+    event.target.remove();
 }
 
 let roundUp = (numberToRound) => {
