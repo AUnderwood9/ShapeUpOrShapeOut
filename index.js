@@ -26,28 +26,29 @@ class Shape{
     }
 
     render(){
+        let randomPosition = getRandomPosition(mainCanvas);
         switch(String(this.type)){
             case "Rectangle":
                 this.shapeToAdd = $(`<div class="rectangle"></div>`);
-                this.shapeToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.height}`});
+                this.shapeToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.height}`, "top": `${randomPosition.height}px`, "left": `${randomPosition.width}px`});
                 this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
                 mainCanvas.append(this.shapeToAdd);
                 break;
             case "Circle": 
                 this.shapeToAdd = $(`<div class="circle"></div>`);
-                this.shapeToAdd.css({"width" : `${2*this.dimensions.radius}px`, "height": `${2*this.dimensions.radius}px`});
+                this.shapeToAdd.css({"width" : `${2*this.dimensions.radius}px`, "height": `${2*this.dimensions.radius}px`, "top": `${randomPosition.height}px`, "left": `${randomPosition.width}px`});
                 this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
                 mainCanvas.append(this.shapeToAdd);
                 break;
             case "Square":
                 this.shapeToAdd = $(`<div class="square"></div>`);
-                this.shapeToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.width}`});
+                this.shapeToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.width}`, "top": `${randomPosition.height}px`, "left": `${randomPosition.width}px`});
                 this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
                 mainCanvas.append(this.shapeToAdd);
                 break;
             case "Triangle":
                 this.shapeToAdd = $(`<div class="triangle"></div>`);
-                this.shapeToAdd.css("border-width", `${this.dimensions.height}px`);
+                this.shapeToAdd.css({"border-width": `${this.dimensions.height}px`, "top": `${randomPosition.height}px`, "left": `${randomPosition.width}px`});
                 this.shapeToAdd.on("click", this, onClickHandler).on("dblclick", onDblClickHandler);
                 mainCanvas.append(this.shapeToAdd);
                 break;
@@ -118,18 +119,6 @@ const initializeMainElements = () => {
     mainCanvas = $("#main-canvas");
     sidePanel = $("#info-div");
 
-    console.log(rectangleBtn);
-    console.log(rectangleWidthText);
-    console.log(rectangleHeightText);
-    console.log(squareBtn);
-    console.log(squareLengthText);
-    console.log(circleBtn);
-    console.log(circleRadiusText);
-    console.log(triangleBtn);
-    console.log(triangleHeightText);
-    console.log(mainCanvas);
-    console.log(sidePanel);
-
 }
 
 let getTextFromInput = (inputElement) => {
@@ -189,6 +178,16 @@ const onDblClickHandler = function(event){
 
 let roundUp = (numberToRound) => {
     return Math.round(numberToRound);
+}
+
+let getRandomPosition = (element) => {
+	//const x = document.body.offsetHeight-element.clientHeight;
+    //const y = document.body.offsetWidth-element.clientWidth;
+    const x = element.height();
+    const y = element.width();
+	const randomX = Math.floor(Math.random()*x);
+	const randomY = Math.floor(Math.random()*y);
+	return {height: randomX, width: randomY};
 }
 
 $(document).ready(() => {

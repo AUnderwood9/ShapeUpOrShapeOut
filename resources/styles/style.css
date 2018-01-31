@@ -25,17 +25,20 @@
     background-color: #00CAFF;
     margin: auto; }
   .container .square {
+    position: absolute;
     background: red;
     margin: 0; }
   .container .circle {
+    position: absolute;
     border-radius: 50%;
     background: purple;
     margin: 0; }
   .container .rectangle {
+    position: absolute;
     background: green;
     margin: 0; }
   .container .triangle {
-    position: relative;
+    position: absolute;
     width: 0;
     height: 0;
     border-style: solid;
