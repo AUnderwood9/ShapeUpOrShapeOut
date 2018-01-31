@@ -56,7 +56,6 @@ class Shape{
     }
 
     showInfo(){
-        console.log(this.dimensions);
         clearElement(sidePanel);
         for(let key in this.dimensions){
             if(key === "shapeName")
@@ -92,7 +91,7 @@ class Circle extends Shape{
         dimensions.width = "N/A";
         dimensions.height = "N/A";
         dimensions.area = roundUp(pi*(roundUp(dimensions.radius)**2));
-        dimensions.perimeter = roundUp(2*pi*(roundUp(dimensions.radius)**2));
+        dimensions.perimeter = roundUp(2*pi*(roundUp(dimensions.radius)));
         super("Circle", dimensions);
     }
 }
@@ -176,6 +175,7 @@ const onClickHandler = function(event){
 
 const onDblClickHandler = function(event){
     event.target.remove();
+    clearElement(sidePanel);
 }
 
 let roundUp = (numberToRound) => {
