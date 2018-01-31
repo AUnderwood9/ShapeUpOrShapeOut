@@ -24,26 +24,16 @@
     padding: 0.75em;
     background-color: #00CAFF;
     margin: auto; }
-  .container #square {
-    width: 100px;
-    height: 100px;
-    background: red; }
-  .container #rectangle {
-    width: 200px;
-    height: 100px;
-    background: red; }
-  .container #circle {
-    width: 10rem;
-    height: 10rem;
+  .container .square {
     background: red;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%; }
-  .container #triangle {
+    margin: 0; }
+  .container .circle {
+    border-radius: 50%;
+    background: purple;
+    margin: 0; }
+  .container .rectangle {
+    background: green;
+    margin: 0; }
+  .container .triangle {
     width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid red; }
-
-/*# sourceMappingURL=style.css.map */
+    height: 0; }

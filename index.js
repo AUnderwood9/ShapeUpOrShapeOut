@@ -11,6 +11,14 @@ let mainCanvas;
 let sidePanel;
 let elementCreated;
 let pi = Math.PI;
+let circleRadius;
+let squareLength;
+let rectangleDimensions = {
+    width: "",
+    height: ""
+};
+let triangleHeight;
+
 //let currentOptionObject;
 
 
@@ -21,10 +29,28 @@ class Shape{
     }
 
     render(){
+        console.log("fire");
         switch(String(this.type)){
             case "Rectangle":
+                let rectangleToAdd = $(`<div class="rectangle"></div>`);
+                rectangleToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.height}`});
+                mainCanvas.append(rectangleToAdd);
                 break;
-            case "circle": 
+            case "Circle": 
+                let circleToAdd = $(`<div class="circle"></div>`);
+                circleToAdd.css({"width" : `${2*this.dimensions.radius}px`, "height": `${2*this.dimensions.radius}px`});
+                mainCanvas.append(circleToAdd);
+                break;
+            case "Square":
+                let squareToAdd = $(`<div class="square"></div>`);
+                squareToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.width}`});
+                mainCanvas.append(squareToAdd);
+                break;
+            case "Triangle":
+                let triangleToAdd = $(`<div class="traingle"></div>`);
+                triangleToAdd.css({"border-left": `${this.dimensions.height}px solid transparent`, "border-right": `${this.dimensions.height}px solid transparent`, "border-bottom": `${this.dimensions.height}px solid yellow`});
+                mainCanvas.append(triangleToAdd);
+                break;
             default:
                 break;
         }
@@ -136,15 +162,17 @@ const rectangleBtnHandler = function(event){
     let rectangleObject = new Rectangle({width: currentWidth, height: curentHeight});
 
     rectangleObject.showInfo();
+    rectangleObject.render();
 }
 
 const squareBtnHandler = function(event){
     let currentWidth = getTextFromInput(squareLengthText);
 
-    let squareObject = new Rectangle({width: currentWidth, height: currentWidth});
+    let squareObject = new Square({width: currentWidth, height: currentWidth});
 
 
     squareObject.showInfo();
+    squareObject.render();
 }
 
 const circleBtnHandler = function(event){
@@ -153,6 +181,7 @@ const circleBtnHandler = function(event){
     let circleObject = new Circle({radius: currentRadius});
 
     circleObject.showInfo();
+    circleObject.render();
 }
 
 const triangleBtnHandler = function(event){
@@ -161,15 +190,15 @@ const triangleBtnHandler = function(event){
     let triangleObject = new Triangle({height: currentHeight});
 
     triangleObject.showInfo();
+    triangleObject.render();
 }
 
-let roundUp= (numberToRound) => {
+let roundUp = (numberToRound) => {
     return Math.round(numberToRound);
 }
 
 $(document).ready(() => {
     initializeMainElements();
-    console.log("fire");
 
     rectangleBtn.on("click", rectangleBtnHandler);
     squareBtn.on("click", squareBtnHandler);
@@ -177,5 +206,3 @@ $(document).ready(() => {
     triangleBtn.on("click", triangleBtnHandler);
 
 });
-
-// position: relative;
