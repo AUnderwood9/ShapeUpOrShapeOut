@@ -1,3 +1,5 @@
+"use strict";
+
 let rectangleBtn;
 let rectangleWidthText;
 let rectangleHeightText;
@@ -13,14 +15,10 @@ let elementCreated;
 let pi = Math.PI;
 let circleRadius;
 let squareLength;
-let rectangleDimensions = {
-    width: "",
-    height: ""
-};
 let triangleHeight;
 
 class Shape{
-    constructor(type, dimensions = {height: "N/A", width: "N/A", radius: "N/A"}){
+    constructor(type, dimensions = {shapeName: "N/A", height: "N/A", width: "N/A", radius: "N/A"}){
         this.type = type;
         this.dimensions = dimensions;
     }
@@ -58,8 +56,12 @@ class Shape{
     }
 
     showInfo(){
+        console.log(this.dimensions);
         clearElement(sidePanel);
         for(let key in this.dimensions){
+            if(key === "shapeName")
+                appendTextToElement(sidePanel, `<p class="info-text">Shape Name: ${this.dimensions[key]}</p>`);
+            else
             appendTextToElement(sidePanel, `<p class="info-text">${key}: ${this.dimensions[key]}</p>`);
         }
         
@@ -143,28 +145,28 @@ const rectangleBtnHandler = function(event){
     let currentWidth = getTextFromInput(rectangleWidthText);
     let curentHeight = getTextFromInput(rectangleHeightText);
 
-    let rectangleObject = new Rectangle({width: currentWidth, height: curentHeight});
+    let rectangleObject = new Rectangle({shapeName: "Rectangle", width: currentWidth, height: curentHeight});
     rectangleObject.render();
 }
 
 const squareBtnHandler = function(event){
     let currentWidth = getTextFromInput(squareLengthText);
 
-    let squareObject = new Square({width: currentWidth, height: currentWidth});
+    let squareObject = new Square({shapeName: "Square", width: currentWidth, height: currentWidth});
     squareObject.render();
 }
 
 const circleBtnHandler = function(event){
     let currentRadius = getTextFromInput(circleRadiusText);
 
-    let circleObject = new Circle({radius: currentRadius});
+    let circleObject = new Circle({shapeName: "Circle", radius: currentRadius});
     circleObject.render();
 }
 
 const triangleBtnHandler = function(event){
     let currentHeight = getTextFromInput(triangleHeightText);
 
-    let triangleObject = new Triangle({height: currentHeight});
+    let triangleObject = new Triangle({shapeName: "Triangle", height: currentHeight});
     triangleObject.render();
 }
 
@@ -181,8 +183,6 @@ let roundUp = (numberToRound) => {
 }
 
 let getRandomPosition = (element) => {
-	//const x = document.body.offsetHeight-element.clientHeight;
-    //const y = document.body.offsetWidth-element.clientWidth;
     const x = element.height();
     const y = element.width();
 	const randomX = Math.floor(Math.random()*x);

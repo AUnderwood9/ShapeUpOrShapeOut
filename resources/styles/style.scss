@@ -19,70 +19,40 @@
     
     .info-panel{
         @include adjust_width_height(45%, 15em);
-        margin: auto;
         @include add_border();
         margin: auto auto 2em auto;
     }
     
     .shape-canvas{
+        display: inline-block;
+        overflow: auto;
         @include adjust_width_height(100%, 35em);
         @include add_border();
         @include background_color(#00CAFF);
         margin: auto;
     }
 
-    // #square {
-    //     width: 100px;
-    //     height: 100px;
-    //     background: red;
-    // }
- 
-    
-    // #rectangle {
-    //     width: 200px;
-    //     height: 100px;
-    //     background: red;
-    // }
-
-    // #circle {
-    //     width: 10rem;
-    //     height: 10rem;
-    //     background: red;
-    //     -moz-border-radius: 50%;
-    //     -webkit-border-radius: 50%;
-    //     border-radius: 50%;
-    // }
-
-
-    // #triangle{
-    //     width: 0;
-    //     height: 0;
-    //     border-left: 50px solid transparent;
-    //     border-right: 50px solid transparent;
-    //     border-bottom: 100px solid yellow;
-    // }
-
     .square{
-        position: absolute;
+        position: relative;
         background: red;
         margin: 0;
     }
 
     .circle{
-        position: absolute;
+        position: relative;
         border-radius: 50%;
         background: purple;
         margin: 0;
     }
 
     .rectangle{
-        position: absolute;
+        position: relative;
         background: green;
         margin: 0;
     }
 
     .triangle{
-        position: absolute;
+        position: relative;
         width: 0;
         height: 0;
         border-style: solid;
