@@ -29,27 +29,34 @@ class Shape{
     }
 
     render(){
-        console.log("fire");
         switch(String(this.type)){
             case "Rectangle":
                 let rectangleToAdd = $(`<div class="rectangle"></div>`);
                 rectangleToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.height}`});
+                rectangleToAdd.data(this.dimensions);
                 mainCanvas.append(rectangleToAdd);
+                // console.log(rectangleToAdd.data());
                 break;
             case "Circle": 
                 let circleToAdd = $(`<div class="circle"></div>`);
                 circleToAdd.css({"width" : `${2*this.dimensions.radius}px`, "height": `${2*this.dimensions.radius}px`});
+                circleToAdd.data(this.dimensions);
                 mainCanvas.append(circleToAdd);
+                // console.log(circleToAdd.data());
                 break;
             case "Square":
                 let squareToAdd = $(`<div class="square"></div>`);
                 squareToAdd.css({"width": `${this.dimensions.width}`, "height": `${this.dimensions.width}`});
+                squareToAdd.data(this.dimensions);
                 mainCanvas.append(squareToAdd);
+                // console.log(squareToAdd.data());
                 break;
             case "Triangle":
-                let triangleToAdd = $(`<div class="traingle"></div>`);
-                triangleToAdd.css({"border-left": `${this.dimensions.height}px solid transparent`, "border-right": `${this.dimensions.height}px solid transparent`, "border-bottom": `${this.dimensions.height}px solid yellow`});
+                let triangleToAdd = $(`<div class="triangle"></div>`);
+                triangleToAdd.css("border-width", `${this.dimensions.height}px`);
+                triangleToAdd.data(this.dimensions)
                 mainCanvas.append(triangleToAdd);
+                // console.log(triangleToAdd.data());
                 break;
             default:
                 break;

@@ -35,5 +35,8 @@
     background: green;
     margin: 0; }
   .container .triangle {
+    position: relative;
     width: 0;
-    height: 0; }
+    height: 0;
+    border-style: solid;
+    border-color: transparent transparent yellow transparent; }
